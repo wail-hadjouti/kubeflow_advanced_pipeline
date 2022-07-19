@@ -2,14 +2,10 @@ import kfp.components as comp
 
 
 
-def merge_and_split(bucket : str, 
-                    data_2015 : str, 
-                    data_2016 : str, 
-                    output_edfcsv : comp.OutputPath('CSV')):
+def merge_and_split(output_edfcsv : comp.OutputPath('CSV')):
     
     import pandas as pd
     import re
-    import boto3
     from io import StringIO
     from sklearn.model_selection import GroupShuffleSplit
     
@@ -36,16 +32,18 @@ def merge_and_split(bucket : str,
         return("N/A")
 
     # Load datasets
-    csv_strings = {}
-    encoding = 'utf-8'
-    for source_data, year in zip([data_2015, data_2016], ["2015", "2016"]):
-        csv_obj = boto3.client('s3').get_object(Bucket=bucket, Key=source_data)
-        body = csv_obj['Body']
-        csv_string = body.read().decode(encoding)
-        csv_strings[year] = csv_string
-        
-    data15 = pd.read_csv(StringIO(csv_strings["2015"]))
-    data16 = pd.read_csv(StringIO(csv_strings["2016"]))
+    #csv_strings = {}
+    #encoding = 'utf-8'
+    #for source_data, year in zip([data_2015, data_2016], ["2015", "2016"]):
+        #csv_obj = boto3.client('s3').get_object(Bucket=bucket, Key=source_data)
+        #body = csv_obj['Body']
+        #csv_string = body.read().decode(encoding)
+        #csv_strings[year] = csv_string
+    url2015 = "https://raw.githubusercontent.com/wail-hadjouti/kubeflow_advanced_pipeline/master/data/2015-building-energy-benchmarking.csv"
+    url2016 = "https://raw.githubusercontent.com/wail-hadjouti/kubeflow_advanced_pipeline/master/data/2015-building-energy-benchmarking.csv"
+
+    data15 = pd.read_csv(url2015)
+    data16 = pd.read_csv(url2016)
 
     # Rename mismatched columns
     rename_cols = {

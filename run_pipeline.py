@@ -68,11 +68,13 @@ PASSWORD = "suqDYSY6ee"
 experiment_id = 'fe0390c9-a311-4248-89e2-72522f17c26c'
 
 version_id = '1'
-params = {'bucket' : 'src-data',
-        'data_2015' : 'temptest/2015-building-energy-benchmarking.csv',
-        'data_2016' : 'temptest/2016-building-energy-benchmarking.csv',
-        'hyperopt_iterations' : '1',
-        'subfolder' : 'temptest'}
+#params = {'bucket' : 'src-data',
+ #       'data_2015' : 'temptest/2015-building-energy-benchmarking.csv',
+  #      'data_2016' : 'temptest/2016-building-energy-benchmarking.csv',
+   #     'hyperopt_iterations' : '1',
+    #    'subfolder' : 'temptest'}
+
+params = {'hyperopt_iterations' : '1'}
 
 # Create run or update ?
 kind = "create"
