@@ -6,7 +6,6 @@ def merge_and_split(output_edfcsv : comp.OutputPath('CSV')):
     
     import pandas as pd
     import re
-    from io import StringIO
     from sklearn.model_selection import GroupShuffleSplit
     
     def get_location(text, method):

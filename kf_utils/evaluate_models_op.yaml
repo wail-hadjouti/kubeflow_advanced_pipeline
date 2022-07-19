@@ -76,18 +76,18 @@ implementation:
       \ \n                  vob_offset=None, \n                  vob_rot=None, \n\
       \                  x_tick_rot=None)\n\n    best_model = performance_df.loc[performance_df[\"\
       R2\"]==performance_df[\"R2\"].max(), \"Model\"].values[0]\n    best_models_hyperparams\
-      \ = hyperparams_dict[best_model]\n\n    s3_resource = boto3.client('s3')\n \
-      \   s3_resource.upload_file(\"./model_performance_R2.png\", \n             \
-      \               bucket, \n                            subfolder + \"/model_performance_R2.png\"\
-      )\n    s3_resource.upload_file(\"./model_performance_MSE.png\", \n         \
-      \                   bucket, \n                            subfolder + \"/model_performance_MSE.png\"\
-      )\n\n    return (best_model, best_models_hyperparams)\n\ndef _serialize_json(obj)\
-      \ -> str:\n    if isinstance(obj, str):\n        return obj\n    import json\n\
-      \n    def default_serializer(obj):\n        if hasattr(obj, 'to_struct'):\n\
-      \            return obj.to_struct()\n        else:\n            raise TypeError(\n\
-      \                \"Object of type '%s' is not JSON serializable and does not\
-      \ have .to_struct() method.\"\n                % obj.__class__.__name__)\n\n\
-      \    return json.dumps(obj, default=default_serializer, sort_keys=True)\n\n\
+      \ = hyperparams_dict[best_model]\n\n    #s3_resource = boto3.client('s3')\n\
+      \    #s3_resource.upload_file(\"./model_performance_R2.png\", \n           \
+      \                # bucket, \n                            #subfolder + \"/model_performance_R2.png\"\
+      )\n    #s3_resource.upload_file(\"./model_performance_MSE.png\", \n        \
+      \                   # bucket, \n                           # subfolder + \"\
+      /model_performance_MSE.png\")\n\n    return (best_model, best_models_hyperparams)\n\
+      \ndef _serialize_json(obj) -> str:\n    if isinstance(obj, str):\n        return\
+      \ obj\n    import json\n\n    def default_serializer(obj):\n        if hasattr(obj,\
+      \ 'to_struct'):\n            return obj.to_struct()\n        else:\n       \
+      \     raise TypeError(\n                \"Object of type '%s' is not JSON serializable\
+      \ and does not have .to_struct() method.\"\n                % obj.__class__.__name__)\n\
+      \n    return json.dumps(obj, default=default_serializer, sort_keys=True)\n\n\
       def _serialize_str(str_value: str) -> str:\n    if not isinstance(str_value,\
       \ str):\n        raise TypeError('Value \"{}\" has type \"{}\" instead of str.'.format(\n\
       \            str(str_value), str(type(str_value))))\n    return str_value\n\n\

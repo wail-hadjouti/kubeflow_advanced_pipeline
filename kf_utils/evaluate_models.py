@@ -104,13 +104,13 @@ def evaluate_models(bucket : str,
     best_model = performance_df.loc[performance_df["R2"]==performance_df["R2"].max(), "Model"].values[0]
     best_models_hyperparams = hyperparams_dict[best_model]
     
-    s3_resource = boto3.client('s3')
-    s3_resource.upload_file("./model_performance_R2.png", 
-                            bucket, 
-                            subfolder + "/model_performance_R2.png")
-    s3_resource.upload_file("./model_performance_MSE.png", 
-                            bucket, 
-                            subfolder + "/model_performance_MSE.png")
+    #s3_resource = boto3.client('s3')
+    #s3_resource.upload_file("./model_performance_R2.png", 
+                           # bucket, 
+                            #subfolder + "/model_performance_R2.png")
+    #s3_resource.upload_file("./model_performance_MSE.png", 
+                           # bucket, 
+                           # subfolder + "/model_performance_MSE.png")
     
     return (best_model, best_models_hyperparams)
 

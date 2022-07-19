@@ -22,7 +22,7 @@ def emission_pipeline(
     hyperopt_iterations,
     subfolder
 ):
-    merge_and_split_task = merge_and_split_op(bucket, data_2015, data_2016)
+    merge_and_split_task = merge_and_split_op()
     preprocess_task = preprocess_dataset_op(merge_and_split_task.outputs['output_edfcsv'])
     preparation_task = prepare_data_op(preprocess_task.outputs['output_cleandatacsv'])
     
