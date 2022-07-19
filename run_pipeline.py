@@ -108,6 +108,7 @@ elif kind == "update":
 
 pipeline_id = get_id(str(pipe_logs))
 
+print("***************************"+URL)
 # Run pipeline
 client.run_pipeline(experiment_id=experiment_id,
                    job_name=job_name,
