@@ -39,7 +39,7 @@ def merge_and_split(output_edfcsv : comp.OutputPath('CSV')):
         #csv_string = body.read().decode(encoding)
         #csv_strings[year] = csv_string
     url2015 = "https://raw.githubusercontent.com/wail-hadjouti/kubeflow_advanced_pipeline/master/data/2015-building-energy-benchmarking.csv"
-    url2016 = "https://raw.githubusercontent.com/wail-hadjouti/kubeflow_advanced_pipeline/master/data/2015-building-energy-benchmarking.csv"
+    url2016 = "https://raw.githubusercontent.com/wail-hadjouti/kubeflow_advanced_pipeline/master/data/2016-building-energy-benchmarking.csv"
 
     data15 = pd.read_csv(url2015)
     data16 = pd.read_csv(url2016)
@@ -66,8 +66,8 @@ def merge_and_split(output_edfcsv : comp.OutputPath('CSV')):
     data15.drop(columns = set(data15.columns.tolist()).difference(data16.columns.tolist()), inplace = True)
 
     # Harmonize column order
-    cols_order = data15.columns.tolist()
-    data15 = data16.loc[:, cols_order]
+    cols_order = data16.columns.tolist()
+    data15 = data15.loc[:, cols_order]
 
     # Concatenate
     emission_df = pd.concat([data15, data16], axis = 0, ignore_index = True)
