@@ -35,7 +35,7 @@ def train_randomforest(input_x_train_csv : comp.InputPath('CSV'),
         'min_samples_split' : hp.choice('min_samples_split', range(2, 10)),
         'min_samples_leaf' : hp.choice('min_samples_leaf', range(1, 10)),
         'max_leaf_nodes' : hp.choice('max_leaf_nodes', range(2, 10, 2)),
-        'criterion': hp.choice('criterion', ["mse", "mae"])}
+        'criterion': hp.choice('criterion', ["absolute_error", "absolute_error"])}
 
     best=0
     def hyperparameter_tuning(space):

@@ -23,7 +23,9 @@ def emission_pipeline(
     subfolder
 ):
     merge_and_split_task = merge_and_split_op()
+
     preprocess_task = preprocess_dataset_op(merge_and_split_task.outputs['output_edfcsv'])
+    
     preparation_task = prepare_data_op(preprocess_task.outputs['output_cleandatacsv'])
     
     rf_train_task = train_randomforest_op(preparation_task.outputs['output_xtraincsv'],
