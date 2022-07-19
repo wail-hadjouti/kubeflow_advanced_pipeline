@@ -24,7 +24,7 @@ def evaluate_models(bucket : str,
     import matplotlib.pyplot as plt
     import seaborn as sns
     import numpy as np
-    import boto3
+    #import boto3
     
     def easy_bar_plot(x, y, data, figname, order=None, xlab=None, ylab=None, title=None, grid=True,
                   values_over_bars=True, vob_round=0, vob_offset=None, vob_rot=None, x_tick_rot=None):
