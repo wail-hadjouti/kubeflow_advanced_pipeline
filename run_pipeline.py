@@ -99,7 +99,7 @@ client = kfp.Client(host=ENDPOINT, cookies=authservice_session)
 if kind == "create":
     pipe_logs = client.upload_pipeline(pipeline_package_path="./pipeline/pipeline.yaml",
                           pipeline_name=pipeline_name,
-                          description="frend")
+                          description="Advanced MLOps pipeline")
     
 # Upload new version of existing pipeline
 elif kind == "update":
