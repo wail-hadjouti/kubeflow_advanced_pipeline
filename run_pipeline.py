@@ -60,7 +60,7 @@ job_name = 'job' + today
 URL = "https://minikf-1.endpoints.s07640-socledevops.cloud.goog/"
 
 # Reminder : ENDPOINT is URL which ends with ...amazonaws.com/pipeline
-ENDPOINT =  "https://minikf-1.endpoints.s07640-socledevops.cloud.goog/_/pipeline"
+ENDPOINT =  "https://minikf-1.endpoints.s07640-socledevops.cloud.goog/pipeline"
 EMAIL = "user"
 PASSWORD = "suqDYSY6ee"
 
