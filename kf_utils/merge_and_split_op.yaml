@@ -52,14 +52,14 @@ implementation:
       \ # convert to numeric\n    data15.drop(columns = \"Location\", inplace = True)\n\
       \n    # Delete columns from data15 that arent in data16\n    data15.drop(columns\
       \ = set(data15.columns.tolist()).difference(data16.columns.tolist()), inplace\
-      \ = True)\n\n    # Harmonize column order\n    cols_order = data16.columns.tolist()\n\
-      \    data15 = data15.loc[:, cols_order]\n\n    # Concatenate\n    emission_df\
+      \ = True)\n\n    # Harmonize column order\n    cols_order = data15.columns.tolist()\n\
+      \    data15 = data16.loc[:, cols_order]\n\n    # Concatenate\n    emission_df\
       \ = pd.concat([data15, data16], axis = 0, ignore_index = True)\n\n    # Train/test\
       \ split\n    inTrain , inTest = next(GroupShuffleSplit(train_size = 0.7, random_state\
       \ = 42).\\\n                        split(emission_df, groups = emission_df[\"\
-      OSEBuildingID\"]))\n\n    emission_df[\"in_train\"] = 0\n    emission_df.iloc[inTrain,\
-      \ 46] = 1\n\n    emission_df.to_csv(output_edfcsv, index=False)\n\nimport argparse\n\
-      _parser = argparse.ArgumentParser(prog='Merge and split', description='')\n\
+      OSEBuildingID\"]))\n\n    emission_df[\"in_train\"] = 0\n    emission_df.loc[inTrain,\
+      \ \"in_train\"] = 1\n\n    emission_df.to_csv(output_edfcsv, index=False)\n\n\
+      import argparse\n_parser = argparse.ArgumentParser(prog='Merge and split', description='')\n\
       _parser.add_argument(\"--output-edfcsv\", dest=\"output_edfcsv\", type=_make_parent_dirs_and_return_path,\
       \ required=True, default=argparse.SUPPRESS)\n_parsed_args = vars(_parser.parse_args())\n\
       \n_outputs = merge_and_split(**_parsed_args)\n"

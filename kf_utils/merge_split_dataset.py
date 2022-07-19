@@ -66,8 +66,8 @@ def merge_and_split(output_edfcsv : comp.OutputPath('CSV')):
     data15.drop(columns = set(data15.columns.tolist()).difference(data16.columns.tolist()), inplace = True)
 
     # Harmonize column order
-    cols_order = data16.columns.tolist()
-    data15 = data15.loc[:, cols_order]
+    cols_order = data15.columns.tolist()
+    data15 = data16.loc[:, cols_order]
 
     # Concatenate
     emission_df = pd.concat([data15, data16], axis = 0, ignore_index = True)
@@ -77,7 +77,7 @@ def merge_and_split(output_edfcsv : comp.OutputPath('CSV')):
                         split(emission_df, groups = emission_df["OSEBuildingID"]))
 
     emission_df["in_train"] = 0
-    emission_df.iloc[inTrain, 46] = 1
+    emission_df.loc[inTrain, "in_train"] = 1
 
     emission_df.to_csv(output_edfcsv, index=False)
 
