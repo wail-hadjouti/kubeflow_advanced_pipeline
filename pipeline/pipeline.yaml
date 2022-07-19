@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
   generateName: emission-prediction-pipeline-
-  annotations: {pipelines.kubeflow.org/kfp_sdk_version: 1.8.10, pipelines.kubeflow.org/pipeline_compilation_time: '2022-01-28T10:26:04.914908',
+  annotations: {pipelines.kubeflow.org/kfp_sdk_version: 1.8.13, pipelines.kubeflow.org/pipeline_compilation_time: '2022-07-19T13:32:32.930258',
     pipelines.kubeflow.org/pipeline_spec: '{"description": "An example pipeline.",
       "inputs": [{"name": "bucket"}, {"name": "data_2015"}, {"name": "data_2016"},
       {"name": "hyperopt_iterations"}, {"name": "subfolder"}], "name": "Emission prediction
       pipeline"}'}
-  labels: {pipelines.kubeflow.org/kfp_sdk_version: 1.8.10}
+  labels: {pipelines.kubeflow.org/kfp_sdk_version: 1.8.13}
 spec:
   entrypoint: emission-prediction-pipeline
   templates:
@@ -338,7 +338,7 @@ spec:
           "xgb_hyperparams": "{{inputs.parameters.train-xgb-hyperparams}}", "xgb_mse":
           "{{inputs.parameters.train-xgb-MSE}}", "xgb_r2": "{{inputs.parameters.train-xgb-R2}}"}'}
       labels:
-        pipelines.kubeflow.org/kfp_sdk_version: 1.8.10
+        pipelines.kubeflow.org/kfp_sdk_version: 1.8.13
         pipelines.kubeflow.org/pipeline-sdk-type: kfp
         pipelines.kubeflow.org/enable_caching: "true"
   - name: merge-and-split
@@ -484,7 +484,7 @@ spec:
           "{{inputs.parameters.bucket}}", "data_2015": "{{inputs.parameters.data_2015}}",
           "data_2016": "{{inputs.parameters.data_2016}}"}'}
       labels:
-        pipelines.kubeflow.org/kfp_sdk_version: 1.8.10
+        pipelines.kubeflow.org/kfp_sdk_version: 1.8.13
         pipelines.kubeflow.org/pipeline-sdk-type: kfp
         pipelines.kubeflow.org/enable_caching: "true"
   - name: model-predict
@@ -549,7 +549,7 @@ spec:
           "CSV"}]}', pipelines.kubeflow.org/component_ref: '{"digest": "f4721521d1bbab4a9793e687253d927d5360eb52b40b3cc66b4940bd464dffbe",
           "url": "./kf_utils/model_predict_op.yaml"}'}
       labels:
-        pipelines.kubeflow.org/kfp_sdk_version: 1.8.10
+        pipelines.kubeflow.org/kfp_sdk_version: 1.8.13
         pipelines.kubeflow.org/pipeline-sdk-type: kfp
         pipelines.kubeflow.org/enable_caching: "true"
   - name: prepare-data
@@ -682,7 +682,7 @@ spec:
           "type": "CSV"}]}', pipelines.kubeflow.org/component_ref: '{"digest": "9e63df7ee17b6e48d63b5ff6f40c06f9af81e0c2f4add240f355524c53c1219a",
           "url": "./kf_utils/prepare_data_op.yaml"}'}
       labels:
-        pipelines.kubeflow.org/kfp_sdk_version: 1.8.10
+        pipelines.kubeflow.org/kfp_sdk_version: 1.8.13
         pipelines.kubeflow.org/pipeline-sdk-type: kfp
         pipelines.kubeflow.org/enable_caching: "true"
   - name: preprocess-dataset
@@ -899,7 +899,7 @@ spec:
           "6be827e49ca000f6859aab5a8eb8a9b3dc9fbadb99b7c003887361dc625f2a39", "url":
           "./kf_utils/preprocess_dataset_op.yaml"}'}
       labels:
-        pipelines.kubeflow.org/kfp_sdk_version: 1.8.10
+        pipelines.kubeflow.org/kfp_sdk_version: 1.8.13
         pipelines.kubeflow.org/pipeline-sdk-type: kfp
         pipelines.kubeflow.org/enable_caching: "true"
   - name: train-best-model
@@ -997,7 +997,7 @@ spec:
           "./kf_utils/train_best_model_op.yaml"}', pipelines.kubeflow.org/arguments.parameters: '{"best_hyperparams":
           "{{inputs.parameters.evaluate-models-hyperparams}}", "best_model": "{{inputs.parameters.evaluate-models-best_model}}"}'}
       labels:
-        pipelines.kubeflow.org/kfp_sdk_version: 1.8.10
+        pipelines.kubeflow.org/kfp_sdk_version: 1.8.13
         pipelines.kubeflow.org/pipeline-sdk-type: kfp
         pipelines.kubeflow.org/enable_caching: "true"
   - name: train-randomforest
@@ -1156,7 +1156,7 @@ spec:
           "./kf_utils/train_randomforest_op.yaml"}', pipelines.kubeflow.org/arguments.parameters: '{"hyperopt_iterations":
           "{{inputs.parameters.hyperopt_iterations}}"}'}
       labels:
-        pipelines.kubeflow.org/kfp_sdk_version: 1.8.10
+        pipelines.kubeflow.org/kfp_sdk_version: 1.8.13
         pipelines.kubeflow.org/pipeline-sdk-type: kfp
         pipelines.kubeflow.org/enable_caching: "true"
   - name: train-svm
@@ -1311,7 +1311,7 @@ spec:
           "./kf_utils/train_svm_op.yaml"}', pipelines.kubeflow.org/arguments.parameters: '{"hyperopt_iterations":
           "{{inputs.parameters.hyperopt_iterations}}"}'}
       labels:
-        pipelines.kubeflow.org/kfp_sdk_version: 1.8.10
+        pipelines.kubeflow.org/kfp_sdk_version: 1.8.13
         pipelines.kubeflow.org/pipeline-sdk-type: kfp
         pipelines.kubeflow.org/enable_caching: "true"
   - name: train-xgb
@@ -1484,7 +1484,7 @@ spec:
           "./kf_utils/train_xgb_op.yaml"}', pipelines.kubeflow.org/arguments.parameters: '{"hyperopt_iterations":
           "{{inputs.parameters.hyperopt_iterations}}"}'}
       labels:
-        pipelines.kubeflow.org/kfp_sdk_version: 1.8.10
+        pipelines.kubeflow.org/kfp_sdk_version: 1.8.13
         pipelines.kubeflow.org/pipeline-sdk-type: kfp
         pipelines.kubeflow.org/enable_caching: "true"
   arguments:

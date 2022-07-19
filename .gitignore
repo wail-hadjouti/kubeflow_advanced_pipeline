@@ -1,7 +1,56 @@
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*,cover
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+
 obj
 bin
-env/
-env
 *.user
 *.suo
 *.tmp
@@ -12,8 +61,6 @@ env
 packages
 *.ide*
 *db.lock
-env/
-env
 .vs
 *.sqlite
 *.zip
@@ -30,9 +77,4 @@ env
 *.joblib
 artifacts/**
 artifacts/**
-git remote add origin https://github.com/wail-hadjouti/wail-had-etu.git
-git remote add origin https://github.com/wail-hadjouti/kubeflow_advanced_pipeline.git
-git branch -M master
-git push -u origin master
-
-https://github.com/wail-hadjouti/kubeflow_advanced_pipeline.git
+*.ipynb
