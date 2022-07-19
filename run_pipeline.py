@@ -74,6 +74,7 @@ kind = "create"
 cj = cookielib.CookieJar()
 br = mechanize.Browser()
 br.set_cookiejar(cj)
+print(URL)
 br.open(URL)
 
 br.select_form(nr=0)
