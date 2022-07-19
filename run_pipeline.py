@@ -50,12 +50,19 @@ def get_cookie(text):
         return(found)
 
 # Parameters
-URL = os.getenv('URL')
+#URL = os.getenv('URL')
 pipeline_name = "advanced_pipeline"
 job_name = 'job' + today
-ENDPOINT = os.getenv('ENDPOINT') # Reminder : ENDPOINT is URL which ends with ...amazonaws.com/pipeline
-EMAIL = os.getenv('EMAIL')
-PASSWORD = os.getenv('PASSWORD')
+#ENDPOINT = os.getenv('ENDPOINT') # Reminder : ENDPOINT is URL which ends with ...amazonaws.com/pipeline
+#EMAIL = os.getenv('EMAIL')
+#PASSWORD = os.getenv('PASSWORD')
+
+URL = "https://minikf-1.endpoints.s07640-socledevops.cloud.goog/"
+
+# Reminder : ENDPOINT is URL which ends with ...amazonaws.com/pipeline
+ENDPOINT =  "https://minikf-1.endpoints.s07640-socledevops.cloud.goog/_/pipeline"
+EMAIL = "user"
+PASSWORD = "suqDYSY6ee"
 
 # Run parameters
 experiment_id = 'fe0390c9-a311-4248-89e2-72522f17c26c'
