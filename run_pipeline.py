@@ -77,7 +77,7 @@ version_id = '1'
 params = {'hyperopt_iterations' : '1'}
 
 # Create run or update ?
-kind = "create"
+kind = "update"
 
 # Get cookie value
 cj = cookielib.CookieJar()
