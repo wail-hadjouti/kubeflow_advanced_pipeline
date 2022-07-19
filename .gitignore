@@ -1,5 +1,7 @@
 obj
 bin
+env/
+env
 *.user
 *.suo
 *.tmp
@@ -28,3 +30,9 @@ env
 *.joblib
 artifacts/**
 artifacts/**
+git remote add origin https://github.com/wail-hadjouti/wail-had-etu.git
+git remote add origin https://github.com/wail-hadjouti/kubeflow_advanced_pipeline.git
+git branch -M master
+git push -u origin master
+
+https://github.com/wail-hadjouti/kubeflow_advanced_pipeline.git
