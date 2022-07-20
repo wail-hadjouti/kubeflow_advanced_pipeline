@@ -49,10 +49,14 @@ def get_cookie(text):
         found = match.group(1)
         return(found)
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 # Parameters
 URL = os.getenv('URL')
 pipeline_name = "advanced_pipeline"
-job_name = 'job' + today
+job_name = pipeline_name + today
 ENDPOINT = os.getenv('ENDPOINT') # Reminder : ENDPOINT is URL which ends with ...amazonaws.com/pipeline
 EMAIL = os.getenv('EMAIL')
 PASSWORD = os.getenv('PASSWORD')
@@ -63,7 +67,6 @@ PASSWORD = os.getenv('PASSWORD')
 
 
 # Run parameters
-experiment_id = 'fe0390c9-a311-4248-89e2-72522f17c26c'
 
 version_id = '1'
 #params = {'bucket' : 'src-data',
@@ -72,16 +75,15 @@ version_id = '1'
    #     'hyperopt_iterations' : '1',
     #    'subfolder' : 'temptest'}
 
-params = {'hyperopt_iterations' : '1'}
+params = {'hyperopt_iterations' : 1}
 
 # Create run or update ?
-kind = "create"
+kind = "update"
 
 # Get cookie value
 cj = cookielib.CookieJar()
 br = mechanize.Browser()
 br.set_cookiejar(cj)
-print(URL)
 br.open(URL)
 
 br.select_form(nr=0)
@@ -107,8 +109,14 @@ elif kind == "update":
                                    pipeline_name = pipeline_name)
 
 pipeline_id = get_id(str(pipe_logs))
+print(client.list_experiments(namespace = 'kubeflow-user'))
+try:
+    experiment_id = client.get_experiment(experiment_name=pipeline_name, namespace='kubeflow-user').id
+except:
+    experiment_id = client.create_experiment(pipeline_name, namespace='kubeflow-user').id
+    
+#experiments = list_experiments_response.experiments
 
-print("***************************"+URL)
 # Run pipeline
 client.run_pipeline(experiment_id=experiment_id,
                    job_name=job_name,
