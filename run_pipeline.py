@@ -49,10 +49,6 @@ def get_cookie(text):
         found = match.group(1)
         return(found)
 
-from dotenv import load_dotenv
-
-load_dotenv()
-
 # Parameters
 URL = os.getenv('URL')
 pipeline_name = "advanced_pipeline"
