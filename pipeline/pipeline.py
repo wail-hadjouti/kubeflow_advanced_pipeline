@@ -10,6 +10,7 @@ train_xgb_op = kfp.components.load_component_from_file("./kf_utils/train_xgb_op.
 evaluate_models_op = kfp.components.load_component_from_file("./kf_utils/evaluate_models_op.yaml")
 train_best_model_op = kfp.components.load_component_from_file("./kf_utils/train_best_model_op.yaml")
 model_predict_op = kfp.components.load_component_from_file("./kf_utils/model_predict_op.yaml")
+kfserving = kfp.components.load_component_from_file("kfserving-component.yaml")
 
 @kfp.dsl.pipeline(
    name='Emission prediction pipeline',
@@ -66,3 +67,15 @@ def emission_pipeline(
     
     model_predict_task = model_predict_op(train_best_model_task.outputs['output_pickle_model'],
                                           preparation_task.outputs['output_xtestcsv'])
+
+   
+    kfservingOp = kfserving(
+        action="apply",
+        model_uri=f"minio://mlpipeline/artifacts/emission-prediction-pipeline-b6bhp/2022/07/20/emission-prediction-pipeline-b6bhp-1612108024/evaluate-models-best_model.tgz",
+        model_name="mnist",
+        namespace='kubeflow-user',
+        framework="tensorflow",
+        watch_timeout="300",
+    )
+
+    kfservingOp.after(train_best_model_task)
