@@ -1,3 +1,4 @@
+from pydoc import Doc
 import kfp
 from datetime import datetime
 import re
@@ -105,7 +106,6 @@ elif kind == "update":
                                    pipeline_name = pipeline_name)
 
 pipeline_id = get_id(str(pipe_logs))
-print(client.list_experiments(namespace = 'kubeflow-user'))
 try:
     experiment_id = client.get_experiment(experiment_name=pipeline_name, namespace='kubeflow-user').id
 except:
@@ -119,6 +119,3 @@ client.run_pipeline(experiment_id=experiment_id,
                    params=params,
                    pipeline_id=pipeline_id)
 
-from kale.common.serveutils import serve
-
-kfserver = serve(model, preprocessing_fn=process_features, preprocessing_assets={'tokenizer':tokenizer})
