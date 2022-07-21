@@ -74,7 +74,7 @@ def emission_pipeline(
         model_uri=f"minio://mlpipeline/artifacts/emission-prediction-pipeline-b6bhp/2022/07/20/emission-prediction-pipeline-b6bhp-1612108024/evaluate-models-best_model.tgz",
         model_name="mnist",
         namespace='kubeflow-user',
-        framework="tensorflow",
+        framework="xgboost",
         watch_timeout="300",
     )
 
