@@ -71,7 +71,7 @@ def emission_pipeline(
    
     kfservingOp = kfserving(
         action="apply",
-        model_uri=f"minio://mlpipeline/artifacts/emission-prediction-pipeline-b6bhp/2022/07/20/emission-prediction-pipeline-b6bhp-1612108024/evaluate-models-best_model.tgz",
+        model_uri=evaluate_models_task.outputs['best_model'],
         model_name="mnist",
         namespace='kubeflow-user',
         framework="xgboost",
